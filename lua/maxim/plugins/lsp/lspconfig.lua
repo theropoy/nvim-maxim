@@ -1,5 +1,6 @@
 -- import lspconfig plugin safely
 local lspconfig_status, lspconfig = pcall(require, "lspconfig")
+local util = require 'lspconfig/util'
 if not lspconfig_status then
   return
 end
@@ -82,6 +83,25 @@ lspconfig["tailwindcss"].setup({
   capabilities = capabilities,
   on_attach = on_attach,
 })
+
+lspconfig['rust_analyzer'].setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+
+lspconfig.gopls.setup {
+  cmd = {"gopls", "serve"},
+  filetypes = {"go", "gomod"},
+  root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+    },
+  },
+}
 
 -- configure emmet language server
 lspconfig["emmet_ls"].setup({
