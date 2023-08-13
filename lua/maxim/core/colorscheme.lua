@@ -13,10 +13,10 @@ require("catppuccin").setup {
     color_overrides = {
         all = {
             base = "#000000",
-			mantle = "#000000",
-			crust = "#000000",
+			mantle = "#1a1a1a",
+			crust = "#333333",
         }
     }
 }
-
+-- #000000
 vim.cmd [[colorscheme catppuccin]]
