@@ -7,8 +7,16 @@
   --return
 --end
 
-vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
+vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
 
-require("catppuccin").setup()
+require("catppuccin").setup {
+    color_overrides = {
+        all = {
+            base = "#000000",
+			mantle = "#000000",
+			crust = "#000000",
+        }
+    }
+}
 
 vim.cmd [[colorscheme catppuccin]]
